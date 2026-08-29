@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Christ Palace Charismatic Church</title>
+    <style>
+        * {margin:0;padding:0;box-sizing:border-box;}
+        body {font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background-color:#121212;color:#fff;}
+        .navbar{display:grid;grid-template-columns:minmax(220px,1fr) auto minmax(220px,1fr);align-items:center;width:100%;min-height:80px;background:#121212;padding:0 40px;position:relative;border-bottom:1px solid rgba(255,240,0,0.65);}
+        .logo-section{display:flex;align-items:center;gap:15px;text-decoration:none;}
+        .logo-container{width:60px;height:60px;display:flex;align-items:center;justify-content:center;}
+        .logo-image{width:60px;height:60px;border-radius:50%;object-fit:cover;}
+        .church-name{color:#FFF000;font-size:24px;font-weight:700;letter-spacing:1px;}
+        .nav-links{display:flex;align-items:center;justify-content:center;gap:clamp(18px,2.2vw,35px);}
+        .nav-link{color:#FFF;text-decoration:none;font-size:16px;font-weight:500;position:relative;padding:5px 0;transition:color .3s;}
+        .nav-link.active,.nav-link:hover{color:#FFF000;}
+        .nav-link.active::after,.nav-link:hover::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,#FFF000,#B9DD7D);}
+        .join-button{justify-self:end;background:#FFF000;color:#121212;padding:12px 30px;border-radius:50px;text-decoration:none;font-size:16px;font-weight:700;letter-spacing:.5px;transition:background .3s;}
+        .join-button:hover{background:#C99735;}
+        .mobile-menu-btn{display:none;justify-self:end;width:44px;height:44px;padding:9px;border:1px solid transparent;background:transparent;cursor:pointer;}
+        .mobile-menu-btn span{display:block;width:25px;height:3px;background:#FFF000;margin:4px 0;transition:transform .2s,opacity .2s;}
+/* Hero section for Events page */
+.hero{
+    position:relative;
+    background:
+        linear-gradient(rgba(18,18,18,0.72), rgba(18,18,18,0.80)),
+        url('assets/church_event_hero.jpg') center/cover no-repeat;
+    color:#FFFFFF;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:600px;
+    overflow:hidden;
+    text-align:center;
+    padding:80px 20px;
+}
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 30% 30%, rgba(255,215,0,0.6), transparent 70%);
+    filter:blur(60px);
+    z-index:-2;
+}
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 15% 50%, rgba(144,238,144,0.4), rgba(255,215,0,0.2), transparent 80%);
+    filter:blur(80px);
+    z-index:-1;
+}
+.hero-content{
+    position:relative;
+    z-index:1;
+}
+.hero h1{
+    font-family:serif;
+    font-size:clamp(48px,6vw,80px);
+    color:#FFFFFF;
+    margin-bottom:0.5rem;
+}
+.hero .subheading{
+    font-size:clamp(20px,2.5vw,28px);
+    color:#FFD700;
+    margin-bottom:0.3rem;
+}
+.hero .tagline{
+    font-size:clamp(14px,1.5vw,18px);
+    color:#FFFFFF;
+    margin-bottom:1rem;
+}
+.hero .divider{
+    height:4px;
+    width:200px;
+    margin:0 auto 1.5rem;
+    background:linear-gradient(90deg,#FFD700,#90EE90);
+}
+/* Search & Filter */
+.search-filter-section{background:#1a1a1a;padding:32px 40px;border-bottom:1px solid rgba(255,215,0,0.2);}
+/* Event Countdown Section */
+.countdown-section{background:linear-gradient(135deg,#1a1a1a,#242424);padding:50px 40px;border-bottom:1px solid rgba(255,215,0,0.2);}
+.countdown-container{max-width:900px;margin:0 auto;text-align:center;}
+.countdown-label{display:inline-block;background:linear-gradient(90deg,#FFD700,#90EE90);color:#121212;font-size:11px;font-weight:800;letter-spacing:2px;padding:4px 16px;border-radius:50px;text-transform:uppercase;margin-bottom:16px;}
+.countdown-title{font-family:serif;font-size:clamp(24px,3vw,32px);color:#fff;margin-bottom:8px;}
+.countdown-event{color:#FFD700;font-size:18px;font-weight:600;margin-bottom:24px;}
+.countdown-timer{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:24px;}
+.countdown-item{background:#121212;border:2px solid rgba(255,215,0,0.3);border-radius:12px;padding:20px 30px;min-width:100px;}
+.countdown-number{font-size:clamp(36px,4vw,48px);font-weight:700;color:#FFD700;line-height:1;display:block;}
+.countdown-label-text{font-size:12px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+.countdown-divider{color:#666;font-size:24px;font-weight:700;align-self:center;}
+@media(max-width:600px){.countdown-item{min-width:80px;padding:15px 20px;}.countdown-number{font-size:28px;}}
+.search-wrap{display:flex;align-items:center;background:#242424;border:1px solid rgba(255,215,0,0.35);border-radius:50px;padding:0 20px;max-width:560px;margin:0 auto 20px;}
+.search-wrap svg{flex-shrink:0;color:#FFD700;}
+.search-wrap input{flex:1;background:transparent;border:none;outline:none;color:#fff;font-size:16px;padding:14px 12px;}
+.search-wrap input::placeholder{color:#888;}
+.search-wrap .clear-btn{background:none;border:none;color:#888;cursor:pointer;font-size:20px;padding:0 4px;line-height:1;}
+.search-wrap .clear-btn:hover{color:#FFD700;}
+.filter-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+.filter-pill{background:transparent;border:1px solid rgba(255,215,0,0.45);color:#ccc;padding:8px 20px;border-radius:50px;cursor:pointer;font-size:14px;transition:all .25s;}
+.filter-pill:hover,.filter-pill.active{background:#FFF000;color:#121212;border-color:#FFF000;font-weight:700;}
+/* Event cards grid */
+.events-section{background:#121212;padding:60px 40px;}
+.events-section-header{text-align:center;margin-bottom:44px;}
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:30px;max-width:1280px;margin:0 auto;}
+/* Rich Event Card */
+.event-card{background:#1a1a1a;border:1px solid rgba(255,215,0,0.15);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .28s,border-color .28s,box-shadow .28s;}
+.event-card:hover{transform:translateY(-6px);border-color:#FFD700;box-shadow:0 12px 36px rgba(255,215,0,0.12);}
+/* Card image area */
+.event-card-img{position:relative;width:100%;height:190px;overflow:hidden;background:#121212;}
+.event-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.event-card:hover .event-card-img img{transform:scale(1.05);}
+.event-card-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:52px;background:linear-gradient(135deg,#1e1e1e,#242424);}
+/* Category badge on image */
+.event-cat-badge{position:absolute;top:14px;left:14px;padding:4px 14px;border-radius:50px;font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;}
+.event-cat-badge.worship{background:#FFD700;color:#121212;}
+.event-cat-badge.youth{background:#90EE90;color:#121212;}
+.event-cat-badge.prayer{background:#C99735;color:#fff;}
+.event-cat-badge.community{background:#4fc3f7;color:#121212;}
+.event-cat-badge.special{background:linear-gradient(90deg,#FFD700,#90EE90);color:#121212;}
+/* Registration status badge */
+.event-reg-status{position:absolute;top:14px;right:14px;padding:4px 12px;border-radius:50px;font-size:11px;font-weight:700;}
+.event-reg-status.open{background:rgba(144,238,144,0.2);border:1px solid #90EE90;color:#90EE90;}
+.event-reg-status.closed{background:rgba(255,80,80,0.15);border:1px solid #ff5050;color:#ff5050;}
+.event-reg-status.free{background:rgba(255,215,0,0.15);border:1px solid #FFD700;color:#FFD700;}
+/* Card body */
+.event-card-body{padding:22px;display:flex;flex-direction:column;flex:1;}
+.event-card-title{color:#fff;font-size:18px;font-weight:700;margin-bottom:10px;line-height:1.35;}
+.event-card-desc{color:#aaa;font-size:14px;line-height:1.6;margin-bottom:16px;flex:1;}
+/* Meta info row */
+.event-card-meta{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;padding:14px;background:rgba(255,215,0,0.04);border:1px solid rgba(255,215,0,0.1);border-radius:10px;}
+.event-meta-row{display:flex;align-items:center;gap:8px;font-size:13px;color:#ccc;}
+.event-meta-row span.icon{font-size:14px;flex-shrink:0;}
+.event-meta-row strong{color:#FFD700;}
+/* Footer: reg status label + View Details button */
+.event-card-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;}
+.event-reg-label{font-size:12px;font-weight:700;padding:5px 12px;border-radius:50px;}
+.event-reg-label.open{background:rgba(144,238,144,0.15);color:#90EE90;border:1px solid rgba(144,238,144,0.4);}
+.event-reg-label.closed{background:rgba(255,80,80,0.1);color:#ff6b6b;border:1px solid rgba(255,80,80,0.35);}
+.event-reg-label.free{background:rgba(255,215,0,0.1);color:#FFD700;border:1px solid rgba(255,215,0,0.35);}
+.event-details-btn{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(90deg,#FFD700,#90EE90);color:#121212;font-size:13px;font-weight:700;padding:9px 20px;border-radius:50px;text-decoration:none;transition:opacity .2s;}
+.event-details-btn:hover{opacity:.85;}
+.no-results{grid-column:1/-1;text-align:center;color:#888;padding:48px 0;font-size:18px;}
+/* Featured Events */
+.featured-section{background:#121212;padding:60px 40px;}
+.section-header{text-align:center;margin-bottom:40px;}
+.section-label{display:inline-block;background:linear-gradient(90deg,#FFD700,#90EE90);color:#121212;font-size:11px;font-weight:800;letter-spacing:2px;padding:4px 16px;border-radius:50px;text-transform:uppercase;margin-bottom:12px;}
+.section-title{font-family:serif;font-size:clamp(28px,3.5vw,42px);color:#fff;margin-bottom:8px;}
+.section-subtitle{color:#666;font-size:16px;}
+.featured-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;max-width:1200px;margin:0 auto;}
+@media(max-width:768px){.featured-grid{grid-template-columns:1fr;}}
+.featured-main{position:relative;border-radius:16px;overflow:hidden;min-height:380px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(135deg,#1a1a1a,#242424);border:1px solid rgba(255,215,0,0.2);}
+.featured-main-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45;}
+.featured-main-body{position:relative;z-index:1;padding:32px;background:linear-gradient(transparent,rgba(18,18,18,0.97));}
+.featured-tag{background:#FFD700;color:#121212;font-size:11px;font-weight:800;padding:3px 12px;border-radius:50px;letter-spacing:1px;display:inline-block;margin-bottom:10px;}
+.featured-date{color:#90EE90;font-size:13px;margin-bottom:6px;}
+.featured-main-title{color:#fff;font-size:clamp(20px,2.5vw,28px);font-weight:700;margin-bottom:8px;}
+.featured-main-desc{color:#ccc;font-size:14px;line-height:1.55;margin-bottom:18px;}
+.featured-btn{display:inline-block;background:linear-gradient(90deg,#FFD700,#90EE90);color:#121212;font-weight:700;font-size:14px;padding:10px 26px;border-radius:50px;text-decoration:none;transition:opacity .2s;}
+.featured-btn:hover{opacity:.85;}
+.featured-side{display:flex;flex-direction:column;gap:16px;}
+.featured-side-card{background:#1e1e1e;border:1px solid rgba(255,215,0,0.15);border-radius:12px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start;transition:border-color .25s,transform .25s;}
+.featured-side-card:hover{border-color:#FFD700;transform:translateX(4px);}
+.featured-side-icon{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#FFD700,#90EE90);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.featured-side-info{}
+.featured-side-date{color:#90EE90;font-size:12px;margin-bottom:4px;}
+.featured-side-title{color:#fff;font-size:15px;font-weight:700;margin-bottom:4px;}
+.featured-side-cat{color:#888;font-size:12px;}
+/* Event Calendar */
+.calendar-section{background:#121212;padding:60px 40px;}
+.calendar-wrap{max-width:900px;margin:0 auto;background:#1a1a1a;border:1px solid rgba(255,215,0,0.15);border-radius:16px;overflow:hidden;}
+.calendar-header{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;background:#1e1e1e;border-bottom:1px solid rgba(255,215,0,0.15);}
+.calendar-header h3{color:#fff;font-family:serif;font-size:22px;}
+.cal-nav-btn{background:transparent;border:1px solid rgba(255,215,0,0.4);color:#FFD700;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;transition:all .2s;display:flex;align-items:center;justify-content:center;}
+.cal-nav-btn:hover{background:#FFD700;color:#121212;}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;padding:12px;}
+.cal-day-label{text-align:center;color:#888;font-size:12px;font-weight:700;padding:8px 0;text-transform:uppercase;letter-spacing:1px;}
+.cal-day{text-align:center;padding:12px 4px;border-radius:8px;color:#666;font-size:14px;cursor:default;transition:all .2s;min-height:48px;display:flex;align-items:center;justify-content:center;}
+.cal-day.current-month{color:#ccc;}
+.cal-day.today{background:rgba(255,215,0,0.15);color:#FFD700;font-weight:700;border:1px solid rgba(255,215,0,0.4);}
+.cal-day.has-event{background:rgba(144,238,144,0.12);color:#90EE90;font-weight:600;cursor:pointer;position:relative;}
+.cal-day.has-event::after{content:"";position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:#FFD700;}
+.cal-day.has-event:hover{background:rgba(255,215,0,0.25);color:#FFD700;}
+.cal-tooltip{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#242424;border:1px solid #FFD700;border-radius:8px;padding:10px 14px;white-space:nowrap;z-index:10;color:#fff;font-size:12px;box-shadow:0 4px 16px rgba(0,0,0,0.4);}
+.cal-day.has-event:hover .cal-tooltip{display:block;}
+.cal-tooltip-title{font-weight:700;margin-bottom:2px;color:#FFD700;}
+.cal-tooltip-time{color:#90EE90;}
+
+/* ---- Live Event Section */
+.live-section{background:#121212;padding:60px 40px;}
+.live-section-header{text-align:center;margin-bottom:40px;}
+.live-section-label{display:inline-block;background:#ff0000;color:#fff;font-size:11px;font-weight:800;letter-spacing:2px;padding:4px 16px;border-radius:50px;text-transform:uppercase;margin-bottom:12px;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
+.live-section-title{font-family:serif;font-size:clamp(28px,3.5vw,42px);color:#fff;margin-bottom:8px;}
+.live-section-subtitle{color:#888;font-size:16px;}
+.live-event-card{background:linear-gradient(135deg,#1a1a1a,#242424);border:2px solid #ff0000;border-radius:16px;padding:40px;text-align:center;max-width:800px;margin:0 auto;}
+.live-indicator{display:inline-flex;align-items:center;gap:8px;background:#ff0000;color:#fff;font-size:14px;font-weight:700;padding:8px 20px;border-radius:50px;margin-bottom:20px;animation:pulse 2s infinite;}
+.live-indicator::before{content:'';width:12px;height:12px;background:#fff;border-radius:50%;animation:blink 1s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.live-event-title{color:#FFD700;font-size:clamp(24px,3vw,32px);font-weight:700;margin-bottom:12px;}
+.live-event-desc{color:#ccc;font-size:16px;margin-bottom:24px;}
+.watch-live-btn{display:inline-flex;align-items:center;gap:10px;background:#ff0000;color:#fff;font-size:16px;font-weight:700;padding:14px 40px;border-radius:50px;text-decoration:none;transition:all .3s;}
+.watch-live-btn:hover{background:#cc0000;transform:scale(1.05);}
+.no-live-card{background:#1a1a1a;border:1px solid rgba(255,215,0,0.15);border-radius:16px;padding:50px;text-align:center;max-width:600px;margin:0 auto;}
+.no-live-icon{font-size:48px;margin-bottom:16px;}
+.no-live-title{color:#888;font-size:24px;font-weight:700;margin-bottom:8px;}
+.no-live-desc{color:#666;font-size:16px;}
+/* Past Events Section */
+.past-events-section{background:#161616;padding:60px 40px;}
+.past-events-header{text-align:center;margin-bottom:44px;}
+.past-events-label{display:inline-block;background:linear-gradient(90deg,#FFD700,#90EE90);color:#121212;font-size:11px;font-weight:800;letter-spacing:2px;padding:4px 16px;border-radius:50px;text-transform:uppercase;margin-bottom:12px;}
+.past-events-title{font-family:serif;font-size:clamp(28px,3.5vw,42px);color:#fff;margin-bottom:8px;}
+.past-events-subtitle{color:#888;font-size:16px;}
+.past-events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:30px;max-width:1280px;margin:0 auto;}
+.past-event-card{background:#1a1a1a;border:1px solid rgba(255,215,0,0.15);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .28s,border-color .28s;}
+.past-event-card:hover{transform:translateY(-4px);border-color:#FFD700;}
+.past-event-img{position:relative;width:100%;height:200px;overflow:hidden;background:#121212;}
+.past-event-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.past-event-card:hover .past-event-img img{transform:scale(1.05);}
+.past-event-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(135deg,#1e1e1e,#242424);}
+.past-event-badge{position:absolute;top:12px;left:12px;background:rgba(255,215,0,0.9);color:#121212;font-size:11px;font-weight:700;padding:4px 12px;border-radius:50px;text-transform:uppercase;}
+.past-event-body{padding:24px;display:flex;flex-direction:column;flex:1;}
+.past-event-title{color:#fff;font-size:18px;font-weight:700;margin-bottom:8px;line-height:1.4;}
+.past-event-date{color:#90EE90;font-size:13px;margin-bottom:12px;}
+.past-event-speaker{color:#FFD700;font-size:14px;margin-bottom:12px;}
+.past-event-speaker strong{color:#fff;}
+.past-event-summary{color:#aaa;font-size:14px;line-height:1.6;margin-bottom:16px;flex:1;}
+.past-event-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;padding:12px;background:rgba(255,215,0,0.04);border:1px solid rgba(255,215,0,0.1);border-radius:10px;}
+.past-meta-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#ccc;}
+.past-meta-item svg{width:14px;height:14px;color:#FFD700;flex-shrink:0;}
+.past-event-footer{display:flex;gap:10px;}
+.past-action-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;border-radius:50px;font-size:13px;font-weight:600;text-decoration:none;transition:all .25s;}
+.past-gallery-btn{background:rgba(144,238,144,0.15);color:#90EE90;border:1px solid rgba(144,238,144,0.4);}
+.past-gallery-btn:hover{background:rgba(144,238,144,0.25);border-color:#90EE90;}
+.past-video-btn{background:rgba(255,215,0,0.15);color:#FFD700;border:1px solid rgba(255,215,0,0.4);}
+.past-video-btn:hover{background:rgba(255,215,0,0.25);border-color:#FFD700;}
+.past-sermon-btn{background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);}
+.past-sermon-btn:hover{background:rgba(255,255,255,0.2);border-color:#fff;}
+/* Event Location Section */
+.location-section{background:#1a1a1a;padding:60px 40px;}
+.location-inner{display:grid;grid-template-columns:1fr 1fr;gap:36px;max-width:1200px;margin:0 auto;align-items:start;}
+@media(max-width:768px){.location-inner{grid-template-columns:1fr;}}
+.location-map{border-radius:16px;overflow:hidden;border:2px solid rgba(255,215,0,0.25);min-height:340px;}
+.location-map iframe{display:block;width:100%;height:340px;border:none;}
+.location-details{display:flex;flex-direction:column;gap:20px;}
+.location-card-item{background:#1e1e1e;border:1px solid rgba(255,215,0,0.15);border-radius:14px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start;transition:border-color .25s;}
+.location-card-item:hover{border-color:#FFD700;}
+.location-card-icon{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,#FFD700,#90EE90);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.location-card-info h4{color:#FFD700;font-size:15px;font-weight:700;margin-bottom:5px;}
+.location-card-info p{color:#aaa;font-size:14px;line-height:1.6;}
+.location-card-info a{color:#90EE90;font-size:13px;font-weight:700;text-decoration:none;display:inline-block;margin-top:6px;}
+.location-card-info a:hover{color:#FFD700;}
+.directions-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,#FFD700,#90EE90);color:#121212;font-weight:700;font-size:14px;padding:12px 28px;border-radius:50px;text-decoration:none;border:none;cursor:pointer;transition:opacity .2s;margin-top:4px;}
+.directions-btn:hover{opacity:.85;}
+/* Footer */
+.footer{padding:68px 40px 24px;background:#000000;color:#fff;}
+.footer-inner{display:grid;grid-template-columns:minmax(230px,1.3fr) repeat(2,minmax(150px,0.65fr)) minmax(200px,0.9fr);gap:42px;width:min(1120px,100%);margin:0 auto;}
+.footer-brand{display:flex;align-items:center;gap:14px;margin-bottom:17px;color:#FFF000;font-size:19px;font-weight:800;text-decoration:none;}
+.footer-logo{width:54px;height:54px;border-radius:50%;object-fit:cover;}
+.footer-summary{max-width:285px;color:rgba(255,255,255,0.7);font-size:14px;line-height:1.7;}
+.footer h3{margin:10px 0 18px;color:#FFF000;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;}
+.footer-links{display:grid;gap:11px;}
+.footer-links a,.footer-contact a{color:rgba(255,255,255,0.72);font-size:14px;text-decoration:none;transition:color .2s ease;}
+.cms-button{display:inline-flex;align-items:center;min-height:42px;margin-top:17px;padding:0 18px;border:1px solid #B9DD7D;border-radius:999px;color:#B9DD7D!important;font-size:13px!important;font-weight:800;}
+.cms-button:hover{background:#B9DD7D;color:#121212!important;}
+.footer-links a:hover,.footer-contact a:hover{color:#B9DD7D;}
+.footer-contact p{margin-bottom:11px;color:rgba(255,255,255,0.72);font-size:14px;line-height:1.55;}
+.footer-bottom{display:flex;justify-content:space-between;gap:18px;width:min(1120px,100%);margin:48px auto 0;padding-top:21px;border-top:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.5);font-size:13px;}
+@media(max-width:768px){.footer{padding:56px 24px 22px;}.footer-inner{grid-template-columns:repeat(2,1fr);gap:30px;}.footer-brand-column,.footer-contact{grid-column:1/-1;}.footer-bottom{align-items:flex-start;flex-direction:column;margin-top:36px;}}
+    </style>
+</head>
+<body>
+<nav class="navbar" aria-label="Primary navigation">
+    <a class="logo-section" href="#home" aria-label="Christ Palace home">
+        <div class="logo-container"><img class="logo-image" src="assets/cpcc-logo.png" alt="CPCC logo"></div>
+        <span class="church-name">CPCC</span>
+    </a>
+    <div class="nav-links" id="primary-navigation">
+        <a href="Index.html" class="nav-link">Home</a>
+        <a href="event.html" class="nav-link">Events</a>
+        <a href="#sermons" class="nav-link">Sermons</a>
+        <a href="#live" class="nav-link">Live</a>
+        <a href="#give" class="nav-link">Give</a>
+        <a href="#contact" class="nav-link">Contact</a>
+    </div>
+    <a href="#join-us" class="join-button">Join Us</a>
+    <button class="mobile-menu-btn" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<main id="events">
+    <section class="hero" aria-labelledby="events-title">
+        <div class="hero-content">
+            <h1 id="events-title" class="title">UPCOMING EVENTS</h1>
+            <p class="subheading">Gather, Grow, Celebrate Together</p>
+            <p class="tagline">Join us as we worship, grow, and celebrate as a community.</p>
+            <div class="divider"></div>
+        </div>
+    </section>
+
+    <!-- Event Countdown Section -->
+    <section class="countdown-section" aria-label="Event Countdown">
+        <div class="countdown-container">
+            <span class="countdown-label">⏰ Coming Up</span>
+            <h2 class="countdown-title">Countdown to Next Event</h2>
+            <p class="countdown-event" id="countdown-event-name">Harvest Thanksgiving Gala</p>
+            <div class="countdown-timer" id="countdown-timer">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label-text">Days</span>
+                </div>
+                <span class="countdown-divider">:</span>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label-text">Hours</span>
+                </div>
+                <span class="countdown-divider">:</span>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label-text">Minutes</span>
+                </div>
+                <span class="countdown-divider">:</span>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label-text">Seconds</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Events -->
+    <section class="featured-section" aria-labelledby="featured-title">
+        <div class="section-header">
+            <span class="section-label">⭐ Don't Miss</span>
+            <h2 class="section-title" id="featured-title">Featured Events</h2>
+            <p class="section-subtitle">Handpicked highlights you won't want to miss this season.</p>
+        </div>
+        <div class="featured-grid">
+            <!-- Main featured card -->
+            <div class="featured-main">
+                <img class="featured-main-img" src="assets/church_event_hero.jpg" alt="Harvest Thanksgiving Gala">
+                <div class="featured-main-body">
+                    <span class="featured-tag">⭐ Featured</span>
+                    <p class="featured-date">📅 Saturday, Sept 27 &middot; 5:00 PM</p>
+                    <h3 class="featured-main-title">Harvest Thanksgiving Gala</h3>
+                    <p class="featured-main-desc">A spectacular night of thanksgiving, celebration, and feasting as we honour God for His faithfulness throughout the year. Come dressed in your best and join us for an unforgettable evening.</p>
+                    <a href="#events-grid" class="featured-btn">View Details &rarr;</a>
+                </div>
+            </div>
+            <!-- Side featured cards -->
+            <div class="featured-side">
+                <div class="featured-side-card">
+                    <div class="featured-side-icon">🙏</div>
+                    <div class="featured-side-info">
+                        <p class="featured-side-date">📅 Sunday, Sept 7 &middot; 9:00 AM</p>
+                        <h3 class="featured-side-title">Sunday Worship Service</h3>
+                        <span class="featured-side-cat">Worship</span>
+                    </div>
+                </div>
+                <div class="featured-side-card">
+                    <div class="featured-side-icon">🔥</div>
+                    <div class="featured-side-info">
+                        <p class="featured-side-date">📅 Friday, Sept 12 &middot; 6:00 PM</p>
+                        <h3 class="featured-side-title">Youth Night</h3>
+                        <span class="featured-side-cat">Youth</span>
+                    </div>
+                </div>
+                <div class="featured-side-card">
+                    <div class="featured-side-icon">🤝</div>
+                    <div class="featured-side-info">
+                        <p class="featured-side-date">📅 Saturday, Sept 20 &middot; 10:00 AM</p>
+                        <h3 class="featured-side-title">Community Outreach Day</h3>
+                        <span class="featured-side-cat">Community</span>
+                    </div>
+                </div>
+                <div class="featured-side-card">
+                    <div class="featured-side-icon">🕊️</div>
+                    <div class="featured-side-info">
+                        <p class="featured-side-date">📅 Wednesday, Sept 10 &middot; 7:00 PM</p>
+                        <h3 class="featured-side-title">Midweek Prayer Meeting</h3>
+                        <span class="featured-side-cat">Prayer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search & Filter Bar -->
+    <section class="search-filter-section" aria-label="Search and filter events">
+        <div class="search-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.868-3.833zm-5.242 1.156a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z"/>
+            </svg>
+            <input type="text" id="event-search" placeholder="Search events..." aria-label="Search events">
+            <button class="clear-btn" id="clear-search" title="Clear search" style="display:none">&#x2715;</button>
+        </div>
+        <div class="filter-pills" role="group" aria-label="Filter by category">
+            <button class="filter-pill active" data-filter="all">All Events</button>
+            <button class="filter-pill" data-filter="worship">Worship</button>
+            <button class="filter-pill" data-filter="youth">Youth</button>
+            <button class="filter-pill" data-filter="community">Community</button>
+            <button class="filter-pill" data-filter="prayer">Prayer</button>
+            <button class="filter-pill" data-filter="special">Special</button>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    <section class="events-section" aria-label="Upcoming Events">
+        <div class="events-section-header">
+            <h2 style="color:#FFD700;font-family:serif;font-size:clamp(28px,3.5vw,42px);">Upcoming Events</h2>
+            <p style="color:#888;font-size:16px;margin-top:8px;">Discover what's happening at Christ Palace CPCC</p>
+        </div>
+        <div class="events-grid" id="events-grid">
+            <article class="event-card" data-category="worship">
+                <div class="event-card-img">
+                    <div class="event-card-img-placeholder">🙏</div>
+                    <span class="event-cat-badge worship">Worship</span>
+                    <span class="event-reg-status open">Open</span>
+                </div>
+                <div class="event-card-body">
+                    <h2 class="event-card-title">Sunday Worship Service</h2>
+                    <p class="event-card-desc">Join us for a powerful morning of praise, worship, and the Word. Experience God's presence and connect with our church family.</p>
+                    <div class="event-card-meta">
+                        <div class="event-meta-row">
+                            <span class="icon">📅</span>
+                            <span><strong>Date:</strong> Sunday, Sept 7, 2026</span>
+                        </div>
+                        <div class="event-meta-row">
+                            <span class="icon">�</span>
+                            <span><strong>Time:</strong> 9:00 AM - 11:30 AM</span>
+                        </div>
+                        <div class="event-meta-row">
+                            <span class="icon">📍</span>
+                            <span><strong>Location:</strong> Main Sanctuary</span>
+                        </div>
+                    </div>
+                    <div class="event-card-footer">
+                        <span class="event-reg-label open">Registration Open</span>
+                        <a href="#" class="event-details-btn">View Details →</a>
+                    </div>
+                </div>
+            </article>
+            <article class="event-card" data-category="youth">
+                <div class="event-card-img">
+                    <div class="event-card-img-placeholder">🔥</div>
+                    <span class="event-cat-badge youth">Youth</span>
+                    <span class="event-reg-status open">Open</span>
+                </div>
+                <div class="event-card-body">
+                    <h2 class="event-card-title">Youth Night</h2>
+                    <p class="event-card-desc">A vibrant evening designed for young people to connect, grow, and have fun in faith. Music, games, and inspiring messages.</p>
+                    <div class="event-card-meta">
+                        <div class="event-meta-row">
+                            <span class="icon">📅</span>
+                            <span><strong>Date:</strong> Friday, Sept 12, 2026</span>
+                        </div>
+                        <div class="event-meta-row">
+                            <span class="icon">�</span>
+                            <span><strong>Time:</strong> 6:00 PM - 8:30 PM</span>
+                        </div>
+                        <div class="event-meta-row">
+                            <span class="icon">📍</span>
+                            <span><strong>Location:</strong> Youth Hall</span>
+                        </div>
+                    </div>
+                    <div class="event-card-footer">
+                        <span class="event-reg-label open">Registration Open</span>
+                        <a href="#" class="event-details-btn">View Details →</a>
+                    </div>
+                </div>
+            </article>
+            <article class="event-card" data-category="special">
+                <div class="event-card-img">
+                    <div class="event-card-img-placeholder">🎉</div>
+                    <span class="event-cat-badge special">Special</span>
+                    <span class="event-reg-status open">Open</span>
+                </div>
+                <div class="event-card-body">
+                    <h2 class="event-card-title">Harvest Thanksgiving Gala</h2>
+                    <p class="event-card-desc">A spectacular night of thanksgiving, celebration, and feasting as we honour God for His faithfulness throughout the year.</p>
+                    <div class="event-card-meta">
+                        <div class="event-meta-row">
+                            <span class="icon">📅</span>
+                            <span><strong>Date:</strong> Saturday, Sept 27, 2026</span>
+                        </div>
+                        <div class="event-meta-row">
+                            <span class="icon">🕗</span>
+                            <span><strong>Time:</strong> 5:00 PM - 10:00 PM</span>
+                        </div>
+                        <div class="event-meta-row">
+                            <span class="icon">📍</span>
+                            <span><strong>Location:</strong> Main Auditorium</span>
+                        </div>
+                    </div>
+                    <div class="event-card-footer">
+                        <span class="event-reg-label open">Registration Open</span>
+                        <a href="#" class="event-details-btn">View Details →</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Live Event Section -->
+    <section class="live-section" aria-label="Live Event">
+        <div class="live-section-header">
+            <span class="live-section-label">🔴 Live Stream</span>
+            <h2 class="live-section-title">Live Event</h2>
+            <p class="live-section-subtitle">Join us live from Christ Palace CPCC</p>
+        </div>
+        
+        <!-- Live State (when event is live) -->
+        <div class="live-event-card" id="live-now" style="display:none;">
+            <div class="live-indicator">🔴 LIVE NOW</div>
+            <h3 class="live-event-title">Sunday Worship Service</h3>
+            <p class="live-event-desc">Join us live from CPCC as we worship together in spirit and truth.</p>
+            <a href="#" class="watch-live-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                </svg>
+                WATCH LIVE
+            </a>
+        </div>
+        
+        <!-- Offline State (when no event is live) -->
+        <div class="no-live-card" id="no-live">
+            <div class="no-live-icon">📺</div>
+            <h3 class="no-live-title">No Live Event Currently</h3>
+            <p class="no-live-desc">Check back when our next service begins.</p>
+        </div>
+    </section>
+
+    <!-- Past Events Section -->
+    <section class="past-events-section" aria-label="Past Events Archive">
+        <div class="past-events-header">
+            <span class="past-events-label">📚 Archive</span>
+            <h2 class="past-events-title">Past Events</h2>
+            <p class="past-events-subtitle">Explore our previous events, sermons, and memories</p>
+        </div>
+        
+        <div class="past-events-grid">
+            <article class="past-event-card">
+                <div class="past-event-img">
+                    <div class="past-event-img-placeholder">🎉</div>
+                    <span class="past-event-badge">Special</span>
+                </div>
+                <div class="past-event-body">
+                    <h3 class="past-event-title">Easter Celebration Service</h3>
+                    <p class="past-event-date">📅 April 20, 2026</p>
+                    <p class="past-event-speaker"><strong>Speaker:</strong> Rev. John Doe</p>
+                    <p class="past-event-summary">A powerful resurrection Sunday celebration with uplifting worship, inspiring message, and communion service.</p>
+                    <div class="past-event-meta">
+                        <div class="past-meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/></svg>
+                            Video Available
+                        </div>
+                        <div class="past-meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
+                            45 Photos
+                        </div>
+                    </div>
+                    <div class="past-event-footer">
+                        <a href="#" class="past-action-btn past-gallery-btn">📷 Gallery</a>
+                        <a href="#" class="past-action-btn past-video-btn">▶ Video</a>
+                        <a href="#" class="past-action-btn past-sermon-btn">📜 Sermon</a>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="past-event-card">
+                <div class="past-event-img">
+                    <div class="past-event-img-placeholder">🙏</div>
+                    <span class="past-event-badge">Worship</span>
+                </div>
+                <div class="past-event-body">
+                    <h3 class="past-event-title">Night of Worship</h3>
+                    <p class="past-event-date">📅 March 15, 2026</p>
+                    <p class="past-event-speaker"><strong>Speaker:</strong> Worship Team</p>
+                    <p class="past-event-summary">An evening of intimate worship, prayer, and spiritual refreshing. A night to encounter God's presence.</p>
+                    <div class="past-event-meta">
+                        <div class="past-meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/></svg>
+                            Video Available
+                        </div>
+                        <div class="past-meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
+                            32 Photos
+                        </div>
+                    </div>
+                    <div class="past-event-footer">
+                        <a href="#" class="past-action-btn past-gallery-btn">📷 Gallery</a>
+                        <a href="#" class="past-action-btn past-video-btn">▶ Video</a>
+                        <a href="#" class="past-action-btn past-sermon-btn">📜 Sermon</a>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="past-event-card">
+                <div class="past-event-img">
+                    <div class="past-event-img-placeholder">🔥</div>
+                    <span class="past-event-badge">Conference</span>
+                </div>
+                <div class="past-event-body">
+                    <h3 class="past-event-title">Annual Leadership Conference</h3>
+                    <p class="past-event-date">📅 February 8-10, 2026</p>
+                    <p class="past-event-speaker"><strong>Speaker:</strong> Guest Speakers</p>
+                    <p class="past-event-summary">Three days of intensive training, empowerment, and networking for church leaders and workers.</p>
+                    <div class="past-event-meta">
+                        <div class="past-meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/></svg>
+                            6 Sessions
+                        </div>
+                        <div class="past-meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/></svg>
+                            78 Photos
+                        </div>
+                    </div>
+                    <div class="past-event-footer">
+                        <a href="#" class="past-action-btn past-gallery-btn">📷 Gallery</a>
+                        <a href="#" class="past-action-btn past-video-btn">▶ Video</a>
+                        <a href="#" class="past-action-btn past-sermon-btn">📜 Sermon</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Event Calendar -->
+    <section class="calendar-section" aria-labelledby="calendar-title">
+        <div class="section-header">
+            <span class="section-label">📅 Plan Ahead</span>
+            <h2 class="section-title" id="calendar-title">Event Calendar</h2>
+            <p class="section-subtitle">Browse events by date — hover over highlighted days to see details.</p>
+        </div>
+        <div class="calendar-wrap">
+            <div class="calendar-header">
+                <button class="cal-nav-btn" id="cal-prev" aria-label="Previous month">&#8249;</button>
+                <h3 id="cal-month-label"></h3>
+                <button class="cal-nav-btn" id="cal-next" aria-label="Next month">&#8250;</button>
+            </div>
+            <div class="calendar-grid" id="calendar-grid"></div>
+        </div>
+    </section>
+
+    <!-- Event Location Section -->
+    <section class="location-section" aria-labelledby="location-title">
+        <div class="section-header">
+            <span class="section-label">📍 Find Us</span>
+            <h2 class="section-title" id="location-title">Event Location</h2>
+            <p class="section-subtitle">All events are held at our main church campus unless stated otherwise.</p>
+        </div>
+        <div class="location-inner">
+            <!-- Map Embed -->
+            <div class="location-map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970!2d-0.186964!3d5.614818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMzYnNTMuNCJOIDDCsDExJzEzLjEiVw!5e0!3m2!1sen!2sgh!4v1234567890"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Christ Palace Charismatic Church location map">
+                </iframe>
+            </div>
+
+            <!-- Location Details -->
+            <div class="location-details">
+                <div class="location-card-item">
+                    <div class="location-card-icon">📍</div>
+                    <div class="location-card-info">
+                        <h4>Church Address</h4>
+                        <p>Christ Palace Charismatic Church<br>Accra, Ghana</p>
+                        <a href="https://maps.google.com" target="_blank" rel="noopener">View on Google Maps →</a>
+                    </div>
+                </div>
+
+                <div class="location-card-item">
+                    <div class="location-card-icon">🕗</div>
+                    <div class="location-card-info">
+                        <h4>Service Times</h4>
+                        <p>
+                            <strong style="color:#fff;">Sunday Service</strong> — 9:00 AM<br>
+                            <strong style="color:#fff;">Midweek Prayer</strong> — Wednesday, 7:00 PM<br>
+                            <strong style="color:#fff;">Youth Night</strong> — Friday, 6:00 PM
+                        </p>
+                    </div>
+                </div>
+
+                <div class="location-card-item">
+                    <div class="location-card-icon">🚗</div>
+                    <div class="location-card-info">
+                        <h4>Parking</h4>
+                        <p>Free parking is available on-site for all service attendees. Additional street parking is available nearby.</p>
+                    </div>
+                </div>
+
+                <div class="location-card-item">
+                    <div class="location-card-icon">📞</div>
+                    <div class="location-card-info">
+                        <h4>Contact Us</h4>
+                        <p>Have questions about an event or need directions?</p>
+                        <a href="tel:+233000000000">+233 000 000 000</a><br>
+                        <a href="mailto:info@christpalace.org">info@christpalace.org</a>
+                    </div>
+                </div>
+
+                <a class="directions-btn" href="https://maps.google.com" target="_blank" rel="noopener">
+                    🗺️ Get Directions
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script>
+    // ---- Search & Filter ----
+    const searchInput = document.getElementById('event-search');
+    const clearBtn   = document.getElementById('clear-search');
+    const pills      = document.querySelectorAll('.filter-pill');
+    const cards      = document.querySelectorAll('.event-card');
+    const grid       = document.getElementById('events-grid');
+    let activeFilter = 'all';
+
+    function filterCards() {
+        const query = searchInput.value.toLowerCase().trim();
+        let visible = 0;
+        cards.forEach(card => {
+            const cat   = card.dataset.category;
+            const text  = card.innerText.toLowerCase();
+            const catOk = activeFilter === 'all' || cat === activeFilter;
+            const txtOk = !query || text.includes(query);
+            card.style.display = catOk && txtOk ? '' : 'none';
+            if (catOk && txtOk) visible++;
+        });
+        let noRes = grid.querySelector('.no-results');
+        if (visible === 0) {
+            if (!noRes) {
+                noRes = document.createElement('p');
+                noRes.className = 'no-results';
+                noRes.textContent = 'No events match your search. Try a different keyword or category.';
+                grid.appendChild(noRes);
+            }
+        } else if (noRes) noRes.remove();
+    }
+
+    searchInput.addEventListener('input', () => {
+        clearBtn.style.display = searchInput.value ? '' : 'none';
+        filterCards();
+    });
+
+    clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        clearBtn.style.display = 'none';
+        filterCards();
+    });
+
+    pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            pills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            activeFilter = pill.dataset.filter;
+            filterCards();
+        });
+    });
+
+    // ---- Interactive Calendar ----
+    const calendarEvents = [
+        { date: '2026-09-07', title: 'Sunday Worship Service', time: '9:00 AM' },
+        { date: '2026-09-10', title: 'Midweek Prayer Meeting', time: '7:00 PM' },
+        { date: '2026-09-12', title: 'Youth Night', time: '6:00 PM' },
+        { date: '2026-09-14', title: 'Sunday Worship Service', time: '9:00 AM' },
+        { date: '2026-09-17', title: 'Midweek Prayer Meeting', time: '7:00 PM' },
+        { date: '2026-09-20', title: 'Community Outreach Day', time: '10:00 AM' },
+        { date: '2026-09-21', title: 'Sunday Worship Service', time: '9:00 AM' },
+        { date: '2026-09-24', title: 'Midweek Prayer Meeting', time: '7:00 PM' },
+        { date: '2026-09-27', title: 'Harvest Thanksgiving Gala', time: '5:00 PM' },
+        { date: '2026-09-28', title: 'Sunday Worship Service', time: '9:00 AM' },
+        { date: '2026-10-05', title: 'First Sunday Communion', time: '9:00 AM' },
+        { date: '2026-10-08', title: 'Midweek Prayer Meeting', time: '7:00 PM' },
+        { date: '2026-10-10', title: 'Youth Night', time: '6:00 PM' },
+        { date: '2026-10-18', title: 'Community Outreach Day', time: '10:00 AM' },
+    ];
+
+    const calGrid   = document.getElementById('calendar-grid');
+    const monthLabel = document.getElementById('cal-month-label');
+    const prevBtn   = document.getElementById('cal-prev');
+    const nextBtn   = document.getElementById('cal-next');
+    const dayNames  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+    let calYear = 2026, calMonth = 8; // September 2026 (0-indexed)
+
+    function getEventsForDate(y, m, d) {
+        const key = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        return calendarEvents.filter(e => e.date === key);
+    }
+
+    function renderCalendar() {
+        calGrid.innerHTML = '';
+        monthLabel.textContent = `${monthNames[calMonth]} ${calYear}`;
+
+        // Day labels
+        dayNames.forEach(d => {
+            const lbl = document.createElement('div');
+            lbl.className = 'cal-day-label';
+            lbl.textContent = d;
+            calGrid.appendChild(lbl);
+        });
+
+        const firstDay = new Date(calYear, calMonth, 1).getDay();
+        const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+        const today = new Date();
+
+        // Empty cells before 1st
+        for (let i = 0; i < firstDay; i++) {
+            const empty = document.createElement('div');
+            empty.className = 'cal-day';
+            calGrid.appendChild(empty);
+        }
+
+        // Day cells
+        for (let d = 1; d <= daysInMonth; d++) {
+            const cell = document.createElement('div');
+            cell.className = 'cal-day current-month';
+            cell.textContent = d;
+
+            // Highlight today
+            if (calYear === today.getFullYear() && calMonth === today.getMonth() && d === today.getDate()) {
+                cell.classList.add('today');
+            }
+
+            // Check for events
+            const evts = getEventsForDate(calYear, calMonth, d);
+            if (evts.length > 0) {
+                cell.classList.add('has-event');
+                const tooltip = document.createElement('div');
+                tooltip.className = 'cal-tooltip';
+                evts.forEach(ev => {
+                    tooltip.innerHTML += `<div class="cal-tooltip-title">${ev.title}</div><div class="cal-tooltip-time">${ev.time}</div>`;
+                });
+                cell.appendChild(tooltip);
+            }
+
+            calGrid.appendChild(cell);
+        }
+    }
+
+    prevBtn.addEventListener('click', () => {
+        calMonth--;
+        if (calMonth < 0) { calMonth = 11; calYear--; }
+        renderCalendar();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        calMonth++;
+        if (calMonth > 11) { calMonth = 0; calYear++; }
+        renderCalendar();
+    });
+
+    renderCalendar();
+
+    // ---- Event Countdown Timer ----
+    const countdownEventName = document.getElementById('countdown-event-name');
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+
+    // Set target date for next event (Harvest Thanksgiving Gala - Sept 27, 2026 at 5:00 PM)
+    const targetDate = new Date('September 27, 2026 17:00:00').getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance < 0) {
+            // Event has passed
+            daysEl.textContent = '00';
+            hoursEl.textContent = '00';
+            minutesEl.textContent = '00';
+            secondsEl.textContent = '00';
+            countdownEventName.textContent = 'Event has ended';
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        daysEl.textContent = days < 10 ? '0' + days : days;
+        hoursEl.textContent = hours < 10 ? '0' + hours : hours;
+        minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes;
+        secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
+    }
+
+    // Update countdown every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+</script>
+
+<footer class="footer" id="contact">
+    <div class="footer-inner">
+        <div class="footer-brand-column">
+            <a class="footer-brand" href="Index.html">
+                <img class="footer-logo" src="assets/cpcc-logo.png" alt="CPCC logo">
+                <span>Christ Palace CPCC</span>
+            </a>
+            <p class="footer-summary">A family of faith, growing in the Word, worship, and community.</p>
+        </div>
+        <div>
+            <h3>Explore</h3>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="Index.html">Home</a>
+                <a href="event.html">Events</a>
+            </nav>
+        </div>
+        <div>
+            <h3>Service Times</h3>
+            <nav class="footer-links" aria-label="Service information">
+                <a href="#location">Sunday Worship — 9:00 AM</a>
+                <a href="#location">Wednesday Prayer — 7:00 PM</a>
+                <a href="#location">Find Our Location</a>
+            </nav>
+        </div>
+        <div class="footer-contact">
+            <h3>Connect</h3>
+            <p>We would love to welcome you and help you plan your visit.</p>
+            <a href="#location">Contact Us for Directions →</a>
+            <a class="cms-button" href="cms.html">Open CMS</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Christ Palace Charismatic Church. All rights reserved.</p>
+        <p>Faith • Family • Purpose</p>
+    </div>
+</footer>
+</body>
+</html>

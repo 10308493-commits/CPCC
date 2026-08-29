@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christ Palace Charismatic Church</title>
+</head>
+<body>
+</body>
+</html>
+            width: 60px;
+            height: 60px;
+        }
+
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .church-name {
+            color: #FFF000;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(18px, 2.2vw, 35px);
+        }
+
+        .nav-link {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link.active {
+            color: #FFF000;
+        }
+
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #FFF000, #B9DD7D);
+        }
+
+        .nav-link:hover {
+            color: #FFF000;
+        }
+
+        .join-button {
+            justify-self: end;
+            background-color: #FFF000;
+            color: #121212;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .join-button:hover {
+            background-color: #C99735;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            justify-self: end;
+            width: 44px;
+            height: 44px;
+            padding: 9px;
+            border: 1px solid transparent;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #FFF000;
+            margin: 4px 0;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .mobile-menu-btn:focus-visible,
+        .nav-link:focus-visible,
+        .join-button:focus-visible,
+        .hero-button:focus-visible {
+            outline: 2px solid #B9DD7D;
+            outline-offset: 4px;
+        }
+
+        .hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            min-height: 500px;
+            display: grid;
+            place-items: center;
+            padding: 58px 40px 70px;
+            background: #121212;
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            z-index: -2;
+            inset: 0;
+            background:
+                url('https://i.pinimg.com/1200x/a1/fd/e4/a1fde4dd0d05b36b54f147c584162a3b.jpg') center/cover no-repeat,
+                radial-gradient(ellipse 65% 24% at 68% 100%, rgba(185, 221, 125, 0.28), transparent 70%),
+                radial-gradient(ellipse 52% 25% at 42% 103%, rgba(255, 240, 0, 0.24), transparent 70%),
+                radial-gradient(circle at 73% 47%, rgba(255, 240, 0, 0.27), transparent 8%),
+                conic-gradient(from 198deg at 73% 48%, transparent 0deg, rgba(255, 240, 0, 0.12) 9deg, transparent 18deg, rgba(255, 240, 0, 0.08) 35deg, transparent 52deg, rgba(255, 240, 0, 0.1) 70deg, transparent 88deg),
+                linear-gradient(118deg, rgba(0,0,0,0.7) 0%, rgba(18,18,18,0.8) 57%, rgba(27,25,5,0.7) 100%);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            width: 16px;
+            height: min(310px, 38vw);
+            right: clamp(10%, 20vw, 25%);
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 999px;
+            background: #FFF000;
+            box-shadow: 0 0 12px 3px #FFF000, 0 0 42px 12px rgba(255, 240, 0, 0.7), 0 0 100px 36px rgba(255, 240, 0, 0.22);
+        }
+
+        .hero-crossbar {
+            position: absolute;
+            z-index: -1;
+            top: calc(50% - min(80px, 10vw));
+            right: calc(clamp(10%, 20vw, 25%) - min(65px, 8vw));
+            width: min(146px, 18vw);
+            height: 15px;
+            border-radius: 999px;
+            background: #FFF000;
+            box-shadow: 0 0 12px 3px #FFF000, 0 0 42px 12px rgba(255, 240, 0, 0.55);
+        }
+
+        .hero-content {
+            width: min(900px, 100%);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #B9DD7D;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .hero-kicker::before {
+            content: '';
+            width: 34px;
+            height: 2px;
+            background: linear-gradient(90deg, #FFF000, #B9DD7D);
+        }
+
+        .hero h1 {
+            max-width: 880px;
+            margin: 18px auto 22px;
+            font-size: clamp(46px, 6.1vw, 80px);
+            line-height: 1.06;
+            letter-spacing: -0.035em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: #FFFFFF;
+        }
+
+        .hero-copy {
+            max-width: 560px;
+            margin: 0 auto;
+            color: #FFF000;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 34px;
+            justify-content: center;
+        }
+
+        .hero-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 0 28px;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .hero-button.primary {
+            background: #FFF000;
+            color: #121212;
+        }
+
+        .hero-button.primary:hover {
+            background: #C99735;
+        }
+
+        .hero-button.secondary {
+            border-color: #B9DD7D;
+            color: #B9DD7D;
+        }
+
+        .hero-button.secondary:hover {
+            border-color: #B9DD7D;
+            color: #B9DD7D;
+        }
+
+        .hero-scripture {
+            position: absolute;
+            z-index: 1;
+            right: 24px;
+            bottom: 28px;
+            left: 24px;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .ministries {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            padding: 96px 40px;
+            background: #121212;
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        .ministries::before {
+            content: '';
+            position: absolute;
+            z-index: -2;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 22% at 20% 100%, rgba(255, 240, 0, 0.16), transparent 70%),
+                radial-gradient(ellipse 55% 22% at 75% 100%, rgba(185, 221, 125, 0.16), transparent 70%),
+                linear-gradient(135deg, #121212, #17170e 55%, #121212);
+        }
+
+        .ministries::after {
+            content: '✦  ✦  ✦';
+            position: absolute;
+            z-index: -1;
+            top: 54px;
+            right: 7%;
+            color: rgba(255, 240, 0, 0.6);
+            font-size: 15px;
+            letter-spacing: 34px;
+        }
+
+        .ministries-inner {
+            width: min(1120px, 100%);
+            margin: 0 auto;
+        }
+
+        .section-kicker {
+            color: #FFF000;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .ministries h2 {
+            margin: 12px 0 10px;
+            font-size: clamp(36px, 4.5vw, 58px);
+            line-height: 1;
+            letter-spacing: -0.035em;
+        }
+
+        .ministries-intro {
+            color: #FFF000;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .ministry-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin: 46px 0 38px;
+        }
+
+        .ministry-card {
+            position: relative;
+            overflow: hidden;
+            min-height: 245px;
+            padding: 28px 22px;
+            border: 1px solid transparent;
+            border-radius: 16px;
+            background: linear-gradient(#202020, #202020) padding-box, linear-gradient(135deg, #FFF000, #B9DD7D) border-box;
+            text-align: left;
+        }
+
+        .ministry-card::after {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            right: -50px;
+            bottom: -65px;
+            border: 1px solid rgba(185, 221, 125, 0.3);
+            border-radius: 50%;
+        }
+
+        .ministry-icon {
+            display: grid;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 26px;
+            place-items: center;
+            color: #FFF000;
+            border: 1px solid rgba(255, 240, 0, 0.35);
+            border-radius: 50%;
+        }
+
+        .ministry-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: currentColor;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 1.8;
+        }
+
+        .ministry-card h3 {
+            margin-bottom: 10px;
+            color: #FFF000;
+            font-size: 20px;
+        }
+
+        .ministry-card p {
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .ministry-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 0 30px;
+            border-radius: 999px;
+            background: #FFF000;
+            color: #121212;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .ministry-button:hover {
+            background: #C99735;
+        }
+
+        .about {
+            position: relative;
+            overflow: hidden;
+            padding: 96px 40px;
+            background: #FFFFFF;
+            color: #121212;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            width: min(500px, 55vw);
+            aspect-ratio: 1;
+            right: -180px;
+            bottom: -230px;
+            border: 20px solid rgba(185, 221, 125, 0.32);
+            border-radius: 50%;
+            box-shadow: 0 0 0 16px rgba(255, 240, 0, 0.22);
+        }
+
+        .about-inner {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(310px, 0.9fr);
+            align-items: center;
+            gap: clamp(42px, 8vw, 110px);
+            width: min(1120px, 100%);
+            margin: 0 auto;
+        }
+
+        .about-kicker {
+            color: #C99735;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .about h2 {
+            margin: 12px 0 20px;
+            font-size: clamp(38px, 4.8vw, 62px);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+        }
+
+        .about h2 span {
+            color: #C99735;
+        }
+
+        .about-copy {
+            max-width: 590px;
+            color: #414141;
+            font-size: 17px;
+            line-height: 1.75;
+        }
+
+        .about-copy + .about-copy {
+            margin-top: 15px;
+        }
+
+        .about-link {
+            display: inline-flex;
+            align-items: center;
+            min-height: 48px;
+            margin-top: 28px;
+            padding: 0 25px;
+            border: 1px solid #121212;
+            border-radius: 999px;
+            color: #121212;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .about-link:hover {
+            background: #121212;
+            color: #FFFFFF;
+        }
+
+        .about-panel {
+            padding: 36px;
+            border-radius: 18px;
+            background: #121212;
+            color: #FFFFFF;
+        }
+
+        .about-panel-mark {
+            display: grid;
+            width: 62px;
+            height: 62px;
+            margin-bottom: 28px;
+            place-items: center;
+            border: 2px solid #FFF000;
+            border-radius: 50%;
+            color: #FFF000;
+            font-size: 25px;
+        }
+
+        .about-image {
+            display: block;
+            width: 100%;
+            height: 275px;
+            margin: -10px 0 28px;
+            border: 1px solid rgba(255, 240, 0, 0.55);
+            border-radius: 12px;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .about-panel h3 {
+            margin-bottom: 15px;
+            color: #FFF000;
+            font-size: 23px;
+        }
+
+        .about-panel p {
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .visit {
+            padding: 96px 40px;
+            background: #121212;
+            color: #FFFFFF;
+        }
+
+        .visit-inner {
+            display: grid;
+            grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+            gap: clamp(38px, 7vw, 92px);
+            align-items: center;
+            width: min(1120px, 100%);
+            margin: 0 auto;
+        }
+
+        .visit-kicker {
+            color: #B9DD7D;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .visit h2 {
+            margin: 13px 0 18px;
+            font-size: clamp(38px, 4.8vw, 62px);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+        }
+
+        .visit-intro {
+            max-width: 410px;
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .visit-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .visit-card {
+            min-height: 180px;
+            padding: 28px;
+            border: 1px solid rgba(255, 240, 0, 0.38);
+            border-radius: 16px;
+            background: #1e1e1e;
+        }
+
+        .visit-card.location-card {
+            grid-column: 1 / -1;
+            border-color: rgba(185, 221, 125, 0.55);
+        }
+
+        .visit-icon {
+            display: grid;
+            width: 38px;
+            height: 38px;
+            margin-bottom: 18px;
+            place-items: center;
+            border: 1px solid #FFF000;
+            border-radius: 50%;
+            color: #FFF000;
+            font-size: 17px;
+        }
+
+        .location-card .visit-icon {
+            border-color: #B9DD7D;
+            color: #B9DD7D;
+        }
+
+        .visit-card h3 {
+            margin-bottom: 7px;
+            color: #FFF000;
+            font-size: 18px;
+        }
+
+        .visit-card p {
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 15px;
+            line-height: 1.55;
+        }
+
+        .visit-card strong {
+            color: #FFFFFF;
+        }
+
+        .directions-link {
+            display: inline-flex;
+            margin-top: 13px;
+            color: #B9DD7D;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .sermons {
+            position: relative;
+            overflow: hidden;
+            padding: 96px 40px;
+            background: #FFFFFF;
+            color: #121212;
+        }
+
+        .sermons::before {
+            content: '';
+            position: absolute;
+            width: 430px;
+            height: 430px;
+            top: -260px;
+            left: -150px;
+            border: 26px solid rgba(185, 221, 125, 0.3);
+            border-radius: 50%;
+            box-shadow: 0 0 0 16px rgba(255, 240, 0, 0.2);
+        }
+
+        .sermons-inner {
+            position: relative;
+            width: min(1120px, 100%);
+            margin: 0 auto;
+        }
+
+        .sermons-header {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 25px;
+            margin-bottom: 38px;
+        }
+
+        .sermons-kicker {
+            color: #C99735;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .sermons h2 {
+            margin-top: 12px;
+            font-size: clamp(38px, 4.8vw, 62px);
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        .all-sermons-link {
+            display: inline-flex;
+            align-items: center;
+            min-height: 46px;
+            padding: 0 22px;
+            border: 1px solid #121212;
+            border-radius: 999px;
+            color: #121212;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .all-sermons-link:hover {
+            background: #121212;
+            color: #FFFFFF;
+        }
+
+        .sermon-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .sermon-card {
+            overflow: hidden;
+            border: 1px solid #e6e6e6;
+            border-radius: 16px;
+            background: #FFFFFF;
+        }
+
+        .sermon-visual {
+            position: relative;
+            display: grid;
+            min-height: 175px;
+            place-items: center;
+            overflow: hidden;
+            background: #121212;
+        }
+
+        .sermon-visual::before {
+            content: '';
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            border: 2px solid #B9DD7D;
+            border-radius: 50%;
+            box-shadow: 0 0 0 18px rgba(255, 240, 0, 0.18);
+        }
+
+        .sermon-visual::after {
+            content: '▶';
+            position: relative;
+            display: grid;
+            width: 55px;
+            height: 55px;
+            padding-left: 3px;
+            place-items: center;
+            border-radius: 50%;
+            background: #FFF000;
+            color: #121212;
+            font-size: 18px;
+        }
+
+        .sermon-visual video,
+        .sermon-visual audio {
+            position: relative;
+            z-index: 2;
+            width: calc(100% - 28px);
+            max-height: 160px;
+        }
+
+        .sermon-card:nth-child(2) .sermon-visual::before {
+            border-color: #FFF000;
+            box-shadow: 0 0 0 18px rgba(185, 221, 125, 0.2);
+        }
+
+        .sermon-card:nth-child(3) .sermon-visual::before {
+            border-color: #C99735;
+        }
+
+        .sermon-content {
+            padding: 23px;
+        }
+
+        .sermon-date {
+            color: #C99735;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .sermon-card h3 {
+            margin: 10px 0 9px;
+            font-size: 21px;
+            line-height: 1.2;
+        }
+
+        .sermon-speaker {
+            color: #5f5f5f;
+            font-size: 14px;
+        }
+
+        .sermon-action {
+            display: inline-flex;
+            margin-top: 19px;
+            color: #121212;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .sermon-action:hover {
+            color: #C99735;
+        }
+
+        .scripture-mission {
+            position: relative;
+            overflow: hidden;
+            padding: 96px 40px;
+            background: #121212;
+            color: #FFFFFF;
+        }
+
+        .scripture-mission::before {
+            content: '';
+            position: absolute;
+            width: min(700px, 65vw);
+            height: 2px;
+            top: 50%;
+            left: -10%;
+            background: linear-gradient(90deg, transparent, rgba(255, 240, 0, 0.6), transparent);
+            transform: rotate(-14deg);
+        }
+
+        .scripture-mission-inner {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            width: min(1120px, 100%);
+            margin: 0 auto;
+        }
+
+        .scripture-card,
+        .mission-card {
+            min-height: 345px;
+            padding: clamp(30px, 4vw, 52px);
+            border-radius: 18px;
+        }
+
+        .scripture-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #FFF000, #C99735);
+            color: #121212;
+        }
+
+        .verse-mark {
+            font-family: Georgia, serif;
+            font-size: 72px;
+            line-height: 0.55;
+        }
+
+        .verse-text {
+            margin: 26px 0;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(24px, 2.7vw, 35px);
+            font-weight: 700;
+            line-height: 1.28;
+        }
+
+        .verse-reference {
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .mission-card {
+            border: 1px solid rgba(185, 221, 125, 0.65);
+            background: #1e1e1e;
+        }
+
+        .mission-kicker {
+            color: #B9DD7D;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .mission-card h2 {
+            max-width: 410px;
+            margin: 17px 0;
+            color: #FFFFFF;
+            font-size: clamp(34px, 3.5vw, 47px);
+            line-height: 1.06;
+            letter-spacing: -0.04em;
+        }
+
+        .mission-card h2 span {
+            color: #FFF000;
+        }
+
+        .mission-card p {
+            max-width: 450px;
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .footer {
+            padding: 68px 40px 24px;
+            background: #000000;
+            color: #FFFFFF;
+        }
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: minmax(230px, 1.3fr) repeat(2, minmax(150px, 0.65fr)) minmax(200px, 0.9fr);
+            gap: 42px;
+            width: min(1120px, 100%);
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 17px;
+            color: #FFF000;
+            font-size: 19px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .footer-logo {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .footer-summary {
+            max-width: 285px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .footer h3 {
+            margin: 10px 0 18px;
+            color: #FFF000;
+            font-size: 14px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            display: grid;
+            gap: 11px;
+        }
+
+        .footer-links a,
+        .footer-contact a {
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 14px;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .cms-button {
+            display: inline-flex;
+            align-items: center;
+            min-height: 42px;
+            margin-top: 17px;
+            padding: 0 18px;
+            border: 1px solid #B9DD7D;
+            border-radius: 999px;
+            color: #B9DD7D !important;
+            font-size: 13px !important;
+            font-weight: 800;
+        }
+
+        .cms-button:hover {
+            background: #B9DD7D;
+            color: #121212 !important;
+        }
+
+        .footer-links a:hover,
+        .footer-contact a:hover {
+            color: #B9DD7D;
+        }
+
+        .footer-contact p {
+            margin-bottom: 11px;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            width: min(1120px, 100%);
+            margin: 48px auto 0;
+            padding-top: 21px;
+            border-top: 1px solid rgba(255, 255, 255, 0.18);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+        }
+
+        @media (max-width: 1024px) {
+            .navbar {
+                grid-template-columns: minmax(180px, 1fr) auto minmax(100px, 1fr);
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 25px;
+            }
+
+            .nav-link {
+                font-size: 14px;
+            }
+
+            .church-name {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: #121212;
+                flex-direction: column;
+                padding: 24px 20px 28px;
+                gap: 20px;
+                border-top: 1px solid rgba(255, 240, 0, 0.3);
+                z-index: 10;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .join-button {
+                display: none;
+            }
+
+            .church-name {
+                font-size: 19px;
+            }
+
+            .logo-container,
+            .logo-svg,
+            .logo-image {
+                width: 52px;
+                height: 52px;
+            }
+
+            .hero {
+                min-height: 490px;
+                padding: 54px 24px 64px;
+            }
+
+            .hero::after {
+                width: 10px;
+                height: 220px;
+                right: 12%;
+                top: 32%;
+            }
+
+            .hero-crossbar {
+                top: calc(32% - 55px);
+                right: calc(12% - 43px);
+                width: 96px;
+                height: 10px;
+            }
+
+            .hero-copy {
+                font-size: 16px;
+            }
+
+            .hero-scripture {
+                bottom: 20px;
+                font-size: 12px;
+            }
+
+            .ministries {
+                padding: 72px 24px;
+            }
+
+            .ministry-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+                margin: 34px 0 30px;
+            }
+
+            .ministry-card {
+                min-height: 218px;
+                padding: 22px 18px;
+            }
+
+            .ministry-icon {
+                margin-bottom: 20px;
+            }
+
+            .ministry-card h3 {
+                font-size: 18px;
+            }
+
+            .ministry-card p {
+                font-size: 14px;
+            }
+
+            .about {
+                padding: 72px 24px;
+            }
+
+            .about-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .about-panel {
+                padding: 30px;
+            }
+
+            .visit {
+                padding: 72px 24px;
+            }
+
+            .visit-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .sermons {
+                padding: 72px 24px;
+            }
+
+            .sermons-header {
+                align-items: flex-start;
+                flex-direction: column;
+                margin-bottom: 30px;
+            }
+
+            .sermon-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .scripture-mission {
+                padding: 72px 24px;
+            }
+
+            .scripture-mission-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .scripture-card,
+            .mission-card {
+                min-height: 290px;
+            }
+
+            .footer {
+                padding: 56px 24px 22px;
+            }
+
+            .footer-inner {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .footer-brand-column,
+            .footer-contact {
+                grid-column: 1 / -1;
+            }
+
+            .footer-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+                margin-top: 36px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ministry-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" aria-label="Primary navigation">
+        <a class="logo-section" href="#home" aria-label="Christ Palace home">
+            <div class="logo-container">
+                <img class="logo-image" src="assets/cpcc-logo.png" alt="CPCC eagle and sword logo">
+            </div>
+            <span class="church-name">CPCC</span>
+        </a>
+
+        <div class="nav-links" id="primary-navigation">
+            <a href="#home" class="nav-link active" aria-current="page">Home</a>
+            <a href="event.html" class="nav-link">Events</a>
+            <a href="#sermons" class="nav-link">Sermons</a>
+            <a href="#live" class="nav-link">Live</a>
+            <a href="#give" class="nav-link">Give</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+
+        <a href="#join-us" class="join-button">Join Us</a>
+
+        <button class="mobile-menu-btn" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <main id="home">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-crossbar" aria-hidden="true"></div>
+            <div class="hero-content">
+                <p class="hero-kicker">CPCC</p>
+                <h1 id="hero-title">Welcome to the<br><span>House of the Lord</span></h1>
+                <p class="hero-copy">We are a family of faith, growing in the Word, worship, and community.</p>
+                <div class="hero-actions">
+                    <a class="hero-button primary" href="#join-us">Join Us Sunday</a>
+                    <a class="hero-button secondary" href="#live">Watch Live</a>
+                </div>
+            </div>
+            <p class="hero-scripture">Where two or three gather in my name, there am I with them. — Matthew 18:20</p>
+        </section>
+
+        <section class="ministries" id="ministries" aria-labelledby="ministries-title">
+            <div class="ministries-inner">
+                <p class="section-kicker">Christ Palace CPCC</p>
+                <h2 id="ministries-title">OUR MINISTRIES</h2>
+                <p class="ministries-intro">Ministries That Serve, Connect, and Grow.</p>
+
+                <div class="ministry-grid">
+                    <article class="ministry-card">
+                        <div class="ministry-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><path d="M4 19h16M6 16V9l6-4 6 4v7M9 19v-5h6v5"/></svg>
+                        </div>
+                        <h3>Uraher Team</h3>
+                        <p>Creating a warm, welcoming experience for every person who walks through our doors.</p>
+                    </article>
+                    <article class="ministry-card">
+                        <div class="ministry-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m9 9 6 3-6 3z"/></svg>
+                        </div>
+                        <h3>Media Team</h3>
+                        <p>Using creativity and technology to share the message of Christ near and far.</p>
+                    </article>
+                    <article class="ministry-card">
+                        <div class="ministry-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="m9 12 2 2 4-4M12 4V2M12 22v-2M20 12h2M2 12h2"/></svg>
+                        </div>
+                        <h3>Evangelism Team</h3>
+                        <p>Taking the hope of the Gospel into our community with compassion and courage.</p>
+                    </article>
+                    <article class="ministry-card">
+                        <div class="ministry-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 1-15 3M4 13a8 8 0 0 1 15-3"/><path d="M4 18v-4h4M20 6v4h-4"/></svg>
+                        </div>
+                        <h3>Follow Up Team</h3>
+                        <p>Walking alongside people with prayer, encouragement, and genuine connection.</p>
+                    </article>
+                </div>
+
+                <a class="ministry-button" href="#all-ministries">View All Ministries</a>
+            </div>
+        </section>
+
+        <section class="about" id="about" aria-labelledby="about-title">
+            <div class="about-inner">
+                <div>
+                    <p class="about-kicker">About Christ Palace CPCC</p>
+                    <h2 id="about-title">A place to <span>believe, belong,</span> and become.</h2>
+                    <p class="about-copy">Christ Palace Charismatic Church is a welcoming family of believers committed to sharing the love of Jesus and helping people grow in faith.</p>
+                    <p class="about-copy">We gather to worship wholeheartedly, learn from God’s Word, build genuine community, and serve with purpose.</p>
+                    <a class="about-link" href="#our-story">Discover Our Story</a>
+                </div>
+                <aside class="about-panel" aria-label="Our mission">
+                    <img class="about-image" src="assets/cpcc-leadership.png" alt="Christ Palace CPCC church leadership">
+                    <h3>Our Mission</h3>
+                    <p>To lead people into a life-changing relationship with Jesus Christ and equip them to make a lasting impact in their homes, community, and world.</p>
+                </aside>
+            </div>
+        </section>
+
+        <section class="visit" id="location" aria-labelledby="visit-title">
+            <div class="visit-inner">
+                <div>
+                    <p class="visit-kicker">Join us in person</p>
+                    <h2 id="visit-title">Service Times &amp; Location</h2>
+                    <p class="visit-intro">There is a place for you at Christ Palace CPCC. Come worship, pray, and grow with us.</p>
+                </div>
+                <div class="visit-details">
+                    <article class="visit-card">
+                        <div class="visit-icon" aria-hidden="true">✦</div>
+                        <h3>Sunday Worship</h3>
+                            <p><strong id="service-sunday">10:00 AM</strong><br>Celebrate faith and fellowship together.</p>
+                    </article>
+                    <article class="visit-card">
+                        <div class="visit-icon" aria-hidden="true">✦</div>
+                        <h3>Wednesday Prayer</h3>
+                            <p><strong id="service-wednesday">6:30 PM</strong><br>Gather for prayer and encouragement.</p>
+                    </article>
+                    <article class="visit-card location-card">
+                        <div class="visit-icon" aria-hidden="true">⌖</div>
+                        <h3>Our Location</h3>
+                        <p id="service-address">Christ Palace Charismatic Church<br>Join us in person and contact us for directions.</p>
+                        <a class="directions-link" href="#contact">Contact Us for Directions</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="sermons" id="sermons" aria-labelledby="sermons-title">
+            <div class="sermons-inner">
+                <div class="sermons-header">
+                    <div>
+                        <p class="sermons-kicker">Grow in the Word</p>
+                        <h2 id="sermons-title">Featured Sermons</h2>
+                    </div>
+                    <a class="all-sermons-link" href="#all-sermons">View All Sermons</a>
+                </div>
+                <div class="sermon-grid" id="sermon-grid">
+                    <article class="sermon-card">
+                        <div class="sermon-visual" aria-label="Watch sermon"></div>
+                        <div class="sermon-content">
+                            <p class="sermon-date">Latest Message</p>
+                            <h3>Walking by Faith</h3>
+                            <p class="sermon-speaker">A message for every season of life.</p>
+                            <a class="sermon-action" href="#watch-walking-by-faith">Watch Sermon →</a>
+                        </div>
+                    </article>
+                    <article class="sermon-card">
+                        <div class="sermon-visual" aria-label="Watch sermon"></div>
+                        <div class="sermon-content">
+                            <p class="sermon-date">Featured Series</p>
+                            <h3>Grace That Sustains</h3>
+                            <p class="sermon-speaker">Discover the strength found in God’s grace.</p>
+                            <a class="sermon-action" href="#watch-grace-that-sustains">Watch Sermon →</a>
+                        </div>
+                    </article>
+                    <article class="sermon-card">
+                        <div class="sermon-visual" aria-label="Watch sermon"></div>
+                        <div class="sermon-content">
+                            <p class="sermon-date">Sunday Worship</p>
+                            <h3>Living With Purpose</h3>
+                            <p class="sermon-speaker">A call to live boldly for the Kingdom.</p>
+                            <a class="sermon-action" href="#watch-living-with-purpose">Watch Sermon →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="scripture-mission" aria-label="Scripture and mission">
+            <div class="scripture-mission-inner">
+                <article class="scripture-card">
+                    <div class="verse-mark" aria-hidden="true">“</div>
+                    <p class="verse-text" id="scripture-text">For where two or three gather in my name, there am I with them.</p>
+                    <p class="verse-reference" id="scripture-reference">Matthew 18:20</p>
+                </article>
+                <article class="mission-card">
+                    <p class="mission-kicker">Our Mission</p>
+                    <h2>Making disciples and <span>transforming lives.</span></h2>
+                    <p>We exist to lead people into a life-changing relationship with Jesus Christ, equip them through God’s Word, and send them out to serve their community and world with love.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contact">
+        <div class="footer-inner">
+            <div class="footer-brand-column">
+                <a class="footer-brand" href="#home">
+                    <img class="footer-logo" src="assets/cpcc-logo.png" alt="CPCC logo">
+                    <span>Christ Palace CPCC</span>
+                </a>
+                <p class="footer-summary">A family of faith, growing in the Word, worship, and community.</p>
+            </div>
+            <div>
+                <h3>Explore</h3>
+                <nav class="footer-links" aria-label="Footer navigation">
+                    <a href="#home">Home</a>
+                    <a href="#sermons">Sermons</a>
+                </nav>
+            </div>
+            <div>
+                <h3>Service Times</h3>
+                <nav class="footer-links" aria-label="Service information">
+                    <a href="#location">Sunday Worship — <span id="footer-sunday">10:00 AM</span></a>
+                    <a href="#location">Wednesday Prayer — <span id="footer-wednesday">6:30 PM</span></a>
+                    <a href="#location">Find Our Location</a>
+                </nav>
+            </div>
+            <div class="footer-contact">
+                <h3>Connect</h3>
+                <p>We would love to welcome you and help you plan your visit.</p>
+                <a href="#location">Contact Us for Directions →</a>
+                <a class="cms-button" href="cms.html">Open CMS</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Christ Palace Charismatic Church. All rights reserved.</p>
+            <p>Faith • Family • Purpose</p>
+        </div>
+    </footer>
+
+    <script src="cms.js"></script>
+    <script>
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('active');
+            mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+            mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+        });
+
+        function setContent(selector, value) {
+            const element = document.querySelector(selector);
+            if (element && value) element.textContent = value;
+        }
+
+        function createSermonCard(sermon, mediaUrl) {
+            const card = document.createElement('article');
+            card.className = 'sermon-card';
+            const visual = document.createElement('div');
+            visual.className = 'sermon-visual';
+            if (mediaUrl) {
+                const media = document.createElement(sermon.mediaType === 'audio' ? 'audio' : 'video');
+                media.src = mediaUrl; media.controls = true; media.preload = 'metadata';
+                if (sermon.mediaType === 'video') media.playsInline = true;
+                visual.append(media);
+            }
+            const content = document.createElement('div');
+            content.className = 'sermon-content';
+            const label = document.createElement('p'); label.className = 'sermon-date'; label.textContent = sermon.mediaType === 'audio' ? 'Audio message' : 'Video message';
+            const title = document.createElement('h3'); title.textContent = sermon.title;
+            const description = document.createElement('p'); description.className = 'sermon-speaker'; description.textContent = sermon.description || sermon.speaker || 'CPCC message';
+            content.append(label, title, description);
+            card.append(visual, content);
+            return card;
+        }
+
+        async function loadManagedContent() {
+            if (!window.CPCCCMS) return;
+            const settings = CPCCCMS.getSettings();
+            document.title = settings.churchName;
+            setContent('#service-sunday', settings.sundayTime);
+            setContent('#service-wednesday', settings.wednesdayTime);
+            setContent('#footer-sunday', settings.sundayTime);
+            setContent('#footer-wednesday', settings.wednesdayTime);
+            setContent('#service-address', settings.address);
+            setContent('#scripture-text', settings.scripture);
+            setContent('#scripture-reference', settings.scriptureReference);
+            const sermons = (await CPCCCMS.getAll('sermons')).sort((a, b) => b.createdAt - a.createdAt).slice(0, 3);
+            if (sermons.length) {
+                const grid = document.querySelector('#sermon-grid');
+                grid.replaceChildren();
+                for (const sermon of sermons) grid.append(createSermonCard(sermon, sermon.mediaUrl || await CPCCCMS.getMediaUrl(sermon.mediaId)));
+            }
+        }
+
+        loadManagedContent();
+    </script>
+</body>
+</html>
